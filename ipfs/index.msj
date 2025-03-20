@@ -1,0 +1,17 @@
+const IPFS = require('ipfs');
+
+async function main() {
+  const node = await IPFS.create();
+  const version = await node.version();
+
+  console.log('IPFS node is running:', version);
+
+  const filesAdded = await node.add({
+    path: 'hello.txt',
+    content: Buffer.from('Hello, IPFS!')
+  });
+
+  console.log('File added:', filesAdded);
+}
+
+main();

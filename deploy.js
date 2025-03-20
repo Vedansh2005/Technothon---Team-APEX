@@ -4,9 +4,9 @@ async function main() {
     const DigitalLegacy = await hre.ethers.getContractFactory("DigitalLegacy");
     const digitalLegacy = await DigitalLegacy.deploy();
 
-    await digitalLegacy.deployed();
+    await digitalLegacy.waitForDeployment();
 
-    console.log("DigitalLegacy deployed to:", digitalLegacy.address);
+    console.log("DigitalLegacy deployed to:", await digitalLegacy.getAddress());
 }
 
 main().catch((error) => {
